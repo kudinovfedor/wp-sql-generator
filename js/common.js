@@ -13,8 +13,9 @@
         var tablePrefix = getById("tablePrefix");
         var form = getById("form");
         var btnCopy = getById("copy");
+        var btnDownload = getById("download");
         var output = getById("output");
-        var html = "", oldString, newString, prefix;
+        var html = "", oldString, newString, prefix, file, text;
         form.addEventListener("submit", function(event) {
             event.preventDefault();
             html = "";
@@ -32,8 +33,12 @@
             html += "UPDATE ".concat(prefix, "comments SET comment_author_url = REPLACE(comment_author_url, '").concat(oldString, "', '").concat(newString, "');\n");
             html += "UPDATE ".concat(prefix, "options SET option_value = REPLACE(option_value, '").concat(oldString, "', '").concat(newString, "') WHERE option_name = 'home' OR option_name = 'siteurl';");
             output.innerHTML = html;
-            if (output.value !== "") {
+            text = output.value;
+            if (text !== "") {
                 btnCopy.classList.remove("d-none");
+                btnDownload.classList.remove("d-none");
+                file = createFile(text);
+                downloadFile(btnDownload, file);
             }
         });
         btnCopy.addEventListener("click", function() {
@@ -42,6 +47,25 @@
                 copy(text);
             }
         });
+    };
+    var createFile = function createFile(data) {
+        var fileName = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "update.sql";
+        var mimeType = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "application/sql";
+        var file = new Blob([ data ], {
+            type: mimeType
+        });
+        return {
+            url: URL.createObjectURL(file),
+            name: fileName
+        };
+    };
+    var downloadFile = function downloadFile(element, file) {
+        var link = element;
+        if (typeof element === "string") {
+            link = getById(link);
+        }
+        link.href = file.url;
+        link.download = file.name;
     };
     var copy = function copy(string) {
         var textarea = d.createElement("textarea");

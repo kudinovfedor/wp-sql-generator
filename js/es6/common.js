@@ -19,9 +19,10 @@
 
         const form = getById('form');
         const btnCopy = getById('copy');
+        const btnDownload = getById('download');
         const output = getById('output');
 
-        let html = '', oldString, newString, prefix;
+        let html = '', oldString, newString, prefix, file, text;
 
         form.addEventListener('submit', (event) => {
             event.preventDefault();
@@ -44,8 +45,15 @@
 
             output.innerHTML = html;
 
-            if (output.value !== '') {
+            text = output.value;
+
+            if (text !== '') {
                 btnCopy.classList.remove('d-none');
+                btnDownload.classList.remove('d-none');
+
+                file = createFile(text);
+
+                downloadFile(btnDownload, file)
             }
         });
 
@@ -56,6 +64,42 @@
                 copy(text);
             }
         });
+    };
+
+    /**
+     * Create File
+     *
+     * @param {string} data - File content
+     * @param {string} [fileName] - File name with extension
+     * @param {string} [mimeType] - Multipurpose Internet Mail Extensions (MIME) type
+     * @returns {{name: string, url: string}}
+     */
+    const createFile = (data, fileName = 'update.sql', mimeType = 'application/sql') => {
+        const file = new Blob([data], {type: mimeType});
+
+        return {
+            url: URL.createObjectURL(file),
+            name: fileName,
+        };
+    };
+
+    /**
+     * Download File
+     *
+     * @param {string|Element} element - Selected element
+     * @param {Object} file - Object with keys (url, name)
+     *
+     * @returns {void}
+     */
+    const downloadFile = (element, file) => {
+        let link = element;
+
+        if (typeof element === 'string') {
+            link = getById(link);
+        }
+
+        link.href = file.url;
+        link.download = file.name;
     };
 
     /**

@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Wordpress SQL Generator</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <style>html,body{height:100%}textarea.form-control{font-size:14px}</style>
+    <style>html,body{height:100%}body{min-width:320px}textarea.form-control{font-size:14px}</style>
 </head>
 <body>
 <div class="container py-1 py-sm-5 h-100 d-flex flex-column">
     <div class="d-flex my-auto flex-column">
-        <h1 class="text-center mb-2 mb-sm-5 font-weight-bold">Wordpress SQL Generator</h1>
+        <h1 class="text-center mb-3 mb-sm-5 font-weight-bold">Wordpress SQL Generator</h1>
         <div class="row">
             <form id="form" class="col-12 col-md-10 col-lg-8 mx-auto">
                 <div class="row">
@@ -37,8 +37,9 @@
                     </div>
                     <div class="col-12">
                         <div class="form-group">
-                            <button id="generateSql" type="submit" class="btn btn-primary">Generate SQL</button>
+                            <button id="generateSql" type="submit" class="btn btn-secondary">Generate</button>
                             <button id="copy" type="button" class="btn btn-success d-none">Copy</button>
+                            <a id="download" href="#" class="btn btn-primary d-none">Download</a>
                         </div>
                     </div>
                 </div>
