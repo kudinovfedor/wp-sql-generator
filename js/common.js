@@ -25,6 +25,9 @@
             html += "UPDATE ".concat(prefix, "posts SET guid = REPLACE(guid, '").concat(oldString, "', '").concat(newString, "');\n");
             html += "UPDATE ".concat(prefix, "posts SET post_content = REPLACE(post_content, '").concat(oldString, "', '").concat(newString, "');\n");
             html += "UPDATE ".concat(prefix, "postmeta SET meta_value = REPLACE(meta_value, '").concat(oldString, "', '").concat(newString, "');");
+            html += "UPDATE ".concat(prefix, "usermeta SET meta_value = REPLACE(meta_value, '").concat(oldString, "', '").concat(newString, "');\n");
+            html += "UPDATE ".concat(prefix, "links SET link_url = REPLACE(link_url, '").concat(oldString, "', '").concat(newString, "');\n");
+            html += "UPDATE ".concat(prefix, "comments SET comment_content = REPLACE(comment_content, '").concat(oldString, "', '").concat(newString, "');");
             output.innerHTML = html;
             if (output.value !== "") {
                 btnCopy.classList.remove("d-none");

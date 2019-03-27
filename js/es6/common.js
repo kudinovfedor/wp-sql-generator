@@ -35,6 +35,9 @@
             html += `UPDATE ${prefix}posts SET guid = REPLACE(guid, '${oldString}', '${newString}');\n`;
             html += `UPDATE ${prefix}posts SET post_content = REPLACE(post_content, '${oldString}', '${newString}');\n`;
             html += `UPDATE ${prefix}postmeta SET meta_value = REPLACE(meta_value, '${oldString}', '${newString}');`;
+            html += `UPDATE ${prefix}usermeta SET meta_value = REPLACE(meta_value, '${oldString}', '${newString}');\n`;
+            html += `UPDATE ${prefix}links SET link_url = REPLACE(link_url, '${oldString}', '${newString}');\n`;
+            html += `UPDATE ${prefix}comments SET comment_content = REPLACE(comment_content, '${oldString}', '${newString}');`;
 
             output.innerHTML = html;
 
