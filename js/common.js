@@ -24,7 +24,7 @@
             html += "UPDATE ".concat(prefix, "options SET option_value = REPLACE(option_value, '").concat(oldString, "', '").concat(newString, "') WHERE option_name = 'home' OR option_name = 'siteurl';\n");
             html += "UPDATE ".concat(prefix, "posts SET guid = REPLACE(guid, '").concat(oldString, "', '").concat(newString, "');\n");
             html += "UPDATE ".concat(prefix, "posts SET post_content = REPLACE(post_content, '").concat(oldString, "', '").concat(newString, "');\n");
-            html += "UPDATE ".concat(prefix, "postmeta SET meta_value = REPLACE(meta_value, '").concat(oldString, "', '").concat(newString, "');");
+            html += "UPDATE ".concat(prefix, "postmeta SET meta_value = REPLACE(meta_value, '").concat(oldString, "', '").concat(newString, "');\n");
             html += "UPDATE ".concat(prefix, "usermeta SET meta_value = REPLACE(meta_value, '").concat(oldString, "', '").concat(newString, "');\n");
             html += "UPDATE ".concat(prefix, "links SET link_url = REPLACE(link_url, '").concat(oldString, "', '").concat(newString, "');\n");
             html += "UPDATE ".concat(prefix, "comments SET comment_content = REPLACE(comment_content, '").concat(oldString, "', '").concat(newString, "');");
