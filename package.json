@@ -1,0 +1,43 @@
+{
+  "name": "joompress",
+  "version": "1.0.0",
+  "description": "Wordpress theme JoomPress",
+  "main": "gulpfile.babel.js",
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/register": "^7.4.0",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-uglify": "^3.0.2"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "scripts": {
+    "start": "yarn install --modules-folder ./../node_modules"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kudinovfedor/joompress.git"
+  },
+  "keywords": [
+    "HTML5",
+    "CSS3",
+    "Sass(Scss)",
+    "SMACSS",
+    "Node",
+    "npm",
+    "yarn",
+    "Gulp"
+  ],
+  "author": "Kudinov Fedor <admin@joompress.biz>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kudinovfedor/joompress/issues"
+  },
+  "homepage": "https://github.com/kudinovfedor/joompress#readme"
+}
