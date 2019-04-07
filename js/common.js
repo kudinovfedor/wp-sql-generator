@@ -20,7 +20,7 @@
             event.preventDefault();
             html = "";
             oldString = URL.old.value;
-            newString = URL.new.value;
+            newString = URL["new"].value;
             prefix = tablePrefix.value;
             html += "UPDATE `".concat(prefix, "posts` SET `guid` = REPLACE(`guid`, '").concat(oldString, "', '").concat(newString, "');\n");
             html += "UPDATE `".concat(prefix, "posts` SET `post_content` = REPLACE(`post_content`, '").concat(oldString, "', '").concat(newString, "');\n");

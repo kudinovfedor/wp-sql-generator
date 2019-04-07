@@ -18,13 +18,13 @@
                     <div class="col-sm-12 col-md-6">
                         <div class="form-group">
                             <label for="oldUrl">Old site URL</label>
-                            <input type="url" name="oldUrl" id="oldUrl" class="form-control" placeholder="Enter old site URL" value="http://joompress.biz" required>
+                            <input type="url" name="oldUrl" id="oldUrl" class="form-control" placeholder="Enter old site URL" value="http://joompress.biz" minlength="12" required>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6">
                         <div class="form-group">
                             <label for="newUrl">New site URL</label>
-                            <input type="url" name="newUrl" id="newUrl" class="form-control" placeholder="Enter new site URL" value="https://joompress.biz" required>
+                            <input type="url" name="newUrl" id="newUrl" class="form-control" placeholder="Enter new site URL" value="https://joompress.biz" minlength="12" required>
                         </div>
                     </div>
                 </div>
@@ -32,12 +32,12 @@
                     <div class="col-6 col-md-4">
                         <div class="form-group">
                             <label for="tablePrefix">Table Prefix</label>
-                            <input type="text" name="dbPrefix" id="tablePrefix" class="form-control" placeholder="Enter table prefix" value="wp_" required minlength="3">
+                            <input type="text" name="dbPrefix" id="tablePrefix" class="form-control" placeholder="Enter table prefix" value="wp_" minlength="3" required>
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="form-group">
-                            <button id="generateSql" type="submit" class="btn btn-secondary">Generate</button>
+                            <button id="generate" type="submit" class="btn btn-secondary">Generate</button>
                             <button id="copy" type="button" class="btn btn-success d-none">Copy</button>
                             <a id="download" href="#" class="btn btn-primary d-none">Download</a>
                         </div>
