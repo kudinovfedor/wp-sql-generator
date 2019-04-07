@@ -8,6 +8,9 @@
     /**
      * Generate SQL
      *
+     * @example
+     * generateSQL();
+     *
      * @returns {void}
      */
     const generateSQL = () => {
@@ -53,7 +56,7 @@
 
                 file = createFile(text);
 
-                downloadFile(btnDownload, file)
+                downloadFile(btnDownload, file);
             }
         });
 
@@ -68,6 +71,9 @@
 
     /**
      * Create File
+     *
+     * @example
+     * createFile('some text', 'help.txt', 'text/plain');
      *
      * @param {string} data - File content
      * @param {string} [fileName] - File name with extension
@@ -86,8 +92,12 @@
     /**
      * Download File
      *
+     * @example
+     * HTML <a id="download" href="#">Download</a>
+     * downloadFile(document.getElementById('download'), file);
+     *
      * @param {string|Element} element - Selected element
-     * @param {Object} file - Object with keys (url, name)
+     * @param {Object|{name: string, url: string}} file - Object with keys (url, name)
      *
      * @returns {void}
      */
@@ -104,6 +114,9 @@
 
     /**
      * Copy string to the clipboard
+     *
+     * @example
+     * copy('some text');
      *
      * @param {string} string
      * @returns {void}
@@ -122,6 +135,9 @@
 
     /**
      * Get By ID
+     *
+     * @example
+     * getById('output');
      *
      * @param {string} id
      * @returns {HTMLElement}
