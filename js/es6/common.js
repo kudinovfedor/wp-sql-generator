@@ -52,11 +52,14 @@
 
             if (text !== '') {
                 btnCopy.classList.remove('d-none');
-                btnDownload.classList.remove('d-none');
 
-                file = createFile(text);
+                if (typeof Blob === 'function') {
+                    btnDownload.classList.remove('d-none');
 
-                downloadFile(btnDownload, file);
+                    file = createFile(text);
+
+                    downloadFile(btnDownload, file);
+                }
             }
         });
 

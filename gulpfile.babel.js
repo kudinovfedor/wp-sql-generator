@@ -19,7 +19,7 @@ gulp.task('babel', () => {
 });
 
 gulp.task('js', () => {
-    return gulp.src('js/common.js')
+    return gulp.src(['js/*.js', '!js/*.min.js'])
         .pipe(uglify({
             mangle: true,
             compress: true,

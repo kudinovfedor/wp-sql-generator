@@ -36,9 +36,11 @@
             text = output.value;
             if (text !== "") {
                 btnCopy.classList.remove("d-none");
-                btnDownload.classList.remove("d-none");
-                file = createFile(text);
-                downloadFile(btnDownload, file);
+                if (typeof Blob === "function") {
+                    btnDownload.classList.remove("d-none");
+                    file = createFile(text);
+                    downloadFile(btnDownload, file);
+                }
             }
         });
         btnCopy.addEventListener("click", function() {
