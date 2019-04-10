@@ -1,24 +1,24 @@
 "use strict";
 
 (function(w, d) {
-    "use strict";
-    d.addEventListener("DOMContentLoaded", function() {
+    'use strict';
+    d.addEventListener('DOMContentLoaded', function() {
         generateSQL();
     });
     var generateSQL = function generateSQL() {
         var URL = {
-            old: getById("oldUrl"),
-            new: getById("newUrl")
+            old: getById('oldUrl'),
+            new: getById('newUrl')
         };
-        var tablePrefix = getById("tablePrefix");
-        var form = getById("form");
-        var btnCopy = getById("copy");
-        var btnDownload = getById("download");
-        var output = getById("output");
-        var html = "", oldString, newString, prefix, file, text;
-        form.addEventListener("submit", function(event) {
+        var tablePrefix = getById('tablePrefix');
+        var form = getById('form');
+        var btnCopy = getById('copy');
+        var btnDownload = getById('download');
+        var output = getById('output');
+        var html = '', oldString, newString, prefix, file, text;
+        form.addEventListener('submit', function(event) {
             event.preventDefault();
-            html = "";
+            html = '';
             oldString = URL.old.value;
             newString = URL["new"].value;
             prefix = tablePrefix.value;
@@ -34,25 +34,25 @@
             html += "UPDATE `".concat(prefix, "options` SET `option_value` = REPLACE(`option_value`, '").concat(oldString, "', '").concat(newString, "') WHERE `option_name` = 'home' OR `option_name` = 'siteurl';");
             output.innerHTML = html;
             text = output.value;
-            if (text !== "") {
-                btnCopy.classList.remove("d-none");
-                if (typeof Blob === "function") {
-                    btnDownload.classList.remove("d-none");
+            if (text !== '') {
+                btnCopy.classList.remove('d-none');
+                if (typeof Blob === 'function') {
+                    btnDownload.classList.remove('d-none');
                     file = createFile(text);
                     downloadFile(btnDownload, file);
                 }
             }
         });
-        btnCopy.addEventListener("click", function() {
+        btnCopy.addEventListener('click', function() {
             var text = output.value;
-            if (text !== "") {
+            if (text !== '') {
                 copy(text);
             }
         });
     };
     var createFile = function createFile(data) {
-        var fileName = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "update.sql";
-        var mimeType = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "application/sql";
+        var fileName = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'update.sql';
+        var mimeType = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'application/sql';
         var file = new Blob([ data ], {
             type: mimeType
         });
@@ -63,18 +63,18 @@
     };
     var downloadFile = function downloadFile(element, file) {
         var link = element;
-        if (typeof element === "string") {
+        if (typeof element === 'string') {
             link = getById(link);
         }
         link.href = file.url;
         link.download = file.name;
     };
     var copy = function copy(string) {
-        var textarea = d.createElement("textarea");
+        var textarea = d.createElement('textarea');
         textarea.value = string;
         d.body.appendChild(textarea);
         textarea.select();
-        d.execCommand("copy");
+        d.execCommand('copy');
         d.body.removeChild(textarea);
     };
     var getById = function getById(id) {
